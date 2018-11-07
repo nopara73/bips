@@ -1,0 +1,53 @@
+<pre>
+  BIP: ?
+  Layer: Applications
+  Title: Address Paste Improvement
+  Author: nopara73 <adam.ficsor73@gmail.com>
+          David Molnar <molnardavid84@gmail.com>
+  Comments-Summary: No comments yet.
+  Comments-URI: https://github.com/bitcoin/bips/wiki/Comments:BIP-0323
+  Status: Draft
+  Type: Standard Track
+  Created: 2018-11-07
+  License: CC0-1.0
+</pre>
+
+== Abstract ==
+
+End-users often copy-paste addresses. This BIP aims to facilitate the user experience regarding this process.    
+
+== Motivation ==
+
+Some services already implemented autopaste functions, which is done as follows: the user clicks to the address box and a Bitcoin address is automatically gets pasted from the clipboard. Depending on the implementation, this could be annoying or too preventive if it completely replaces the possibility of manually entering a Bitcoin address.
+
+== Specification ==
+
+=== Clipboard Address Validation ===
+
+1. The software checks the content of the clipboard when the mouse cursor enters the address box area.  
+2. If the clipboard is not text or its lenght is above 50 characters, then the result of the validation is false. This safety check is needed in order to avoid Bitcoin address validation on huge text blocks for example.
+3. Next trim whitespaces from the beginning of the end of the clipboard content.
+4. Finally Bitcoin addess validation can proceed on the trimmed text normally with the preferred validation method of the implementor. 
+
+=== If Address Box Is Empty ===
+
+![foo](https://i.imgur.com/99WBKk2.png)
+
+When the mouse cursor enters the address box area, clipboard address validation is performed. If the check is successful, the appearence of the mouse cursor remains unchanged, unlike the normal text box behavior when it changes to the caret. Optionally a special cursor icon can be used, however, in order to avoid cross platform issues, the implementor may choose to go with the default mouse cursor as suggested.
+
+![](https://i.imgur.com/7ZC5gVS.png)
+
+![](https://i.imgur.com/Wbqaxf9.png)
+
+
+== Reference implementation ==
+
+Soon in Wasabi Wallet: https://github.com/zkSNACKs/WalletWasabi
+
+== References ==
+
+# Wasabi Wallet: https://github.com/zkSNACKs/WalletWasabi
+
+== Copyright ==
+
+This document is licensed under the Creative Commons CC0 1.0 Universal license.
